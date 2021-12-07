@@ -1,0 +1,26 @@
+recyclerview 주요 클래스
+
+1.view holder
+    - 각각의 뷰를 보관하는 객체
+    - 각 요소를 저장해 두고 사용함
+    - 아이템 생성시 뷰 바인딩은 한 번만 하고,그 바인딩 된 객체를 가져다 사용하여 성능 부분에서 효율적
+
+2.layoutmanager
+    - 아이템의 배치를 담당
+    - LinearLayoutManager - 가로/세로
+    - GridLayoutManager - 그리드 형식
+    - StaggeredGridLayoutManager - 지그재그형의 그리드
+
+3.Adapter
+    - 데이터와 아이템에 관한 View를 생성하는 기능
+
+4.ItemAnimation
+    - Item 추가 / 삭제시에 애니메이션을 적용할 때 사용함
+
+5.ItemDecoration
+    - RecyclerView의 아이템을 꾸미는 역할을 함
+    - 주로 Divider를 설정할 때 유용하게 사용됨
+        - Divider: 구분선
+
+6.Click Detection
+    - onClickListner를 통해 직접 구현 해주어야 한다.

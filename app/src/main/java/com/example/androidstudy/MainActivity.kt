@@ -3,35 +3,39 @@ package com.example.androidstudy
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
+import com.example.androidstudy.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var profileAdapter: ProfileAdapter
     val datas = mutableListOf<ProfileData>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
-        initRecycler()
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        super.onCreate(savedInstanceState)
+        setContentView(binding.root)
+
+        binding.setbutton.setOnClickListener { initRecycler() }
+
+        datas.apply {
+            binding.rvProfile.addItemDecoration(VerticalItemDecorator(20))//가로로 구분선 추가
+            //rv_profile.addItemDecoration(HorizontalItemDecorator(20))//세로로 구분선 추가
+        }
+
     }
     @SuppressLint("NotifyDataSetChanged")
     private fun initRecycler(){
+        val str_usname = binding.username.text.toString()
+        val it_usage = binding.userage.text.toString()
         profileAdapter = ProfileAdapter(this)
-        val rv_profile: RecyclerView = findViewById(R.id.rv_profile)
-        rv_profile.adapter = profileAdapter
+        binding.rvProfile.adapter = profileAdapter
 
         datas.apply {
-            rv_profile.addItemDecoration(VerticalItemDecorator(20))//가로로 구분선 추가
-            rv_profile.addItemDecoration(HorizontalItemDecorator(20))//세로로 구분선 추가
-            add(ProfileData(img = R.drawable.ic_launcher_foreground, name="mary", age = 24))
-            add(ProfileData(img = R.drawable.ic_launcher_background, name="jenny", age = 26))
-            add(ProfileData(img = R.drawable.ic_launcher_foreground, name="jhon", age = 27))
-            add(ProfileData(img = R.drawable.ic_launcher_background, name="ruby", age = 21))
-            add(ProfileData(img = R.drawable.ic_launcher_foreground, name="yuna", age = 23))
-            add(ProfileData(img = R.drawable.ic_launcher_background, name="ruby", age = 21))
-            add(ProfileData(img = R.drawable.ic_launcher_foreground, name="yuna", age = 23))
-
+            add(ProfileData(img = R.drawable.ic_launcher_foreground, name = str_usname, age = it_usage))
             profileAdapter.datas = datas
             profileAdapter.notifyDataSetChanged()
         }

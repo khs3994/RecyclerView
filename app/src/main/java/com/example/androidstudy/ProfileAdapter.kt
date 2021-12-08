@@ -26,7 +26,7 @@ class ProfileAdapter(private val context: Context):RecyclerView.Adapter<ProfileA
         holder.bind(datas[position])
     }
 
-    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) { //리사이클러뷰에 ㄷ
+    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         private val Name: TextView = itemView.findViewById(R.id.tv_rv_name)
         private val Age: TextView = itemView.findViewById(R.id.tv_rv_age)
         private val img: ImageView = itemView.findViewById(R.id.img_rv_photo)
